@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#124589"
     android:fillViewport="true"
     tools:context="etong.bottomnavigation.demo.MoviesFragment">
 
@@ -17,77 +16,79 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:text="@string/hello_blank_fragment"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:text="@string/hello_blank_fragment"
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="end"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
 
     </LinearLayout>
 
