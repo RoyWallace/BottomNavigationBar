@@ -24,6 +24,35 @@ Add it in your root build.gradle at the end of repositories:
 		    compile 'com.github.RoyWallace:BottomNavigationBar:v0.1'
 	}
 
+**Step 3.**  use it in your layout xml
+
+	<etong.bottomnavigation.lib.BottomNavigationBar
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"/>
+**Step 4.** add tab and tabSelected listener
+
+	bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
+	//params: int icon,String text,int color
+	bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Movies & Tv", 0xff4a5965);
+	bottomLayout.setOnTabListener(new BottomNavigationBar.TabListener() {
+	    @Override
+	    public void onSelected(int position) {
+	        //...
+	    }
+	});
+and you can also use the **BottomNavigationBehavior** with **CoordinatorLayout** 
+
+	<etong.bottomnavigation.lib.BottomNavigationBar
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        app:layout_behavior="etong.bottomnavigation.lib.BottomNavigationBehavior"/>
+
+ 
+
 #License
 BottomNavigationBar for Android
 The MIT License (MIT)

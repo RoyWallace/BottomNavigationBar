@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Movies & Tv", 0xff4a5965);
         bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Music", 0xff096c54);
         bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Books", 0xff8a6a64);
-//        bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Newsstand", 0xff553b36);
+        bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Newsstand", 0xff553b36);
         bottomLayout.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
             public void onSelected(int position) {
