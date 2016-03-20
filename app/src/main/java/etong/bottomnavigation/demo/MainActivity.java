@@ -3,6 +3,7 @@ package etong.bottomnavigation.demo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.container, MoviesFragment.newInstance()).commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, MoviesFragment.newInstance()).commitAllowingStateLoss();
 
         setUpBottomNavigationBar();
     }
@@ -68,7 +69,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomLayout.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
             public void onSelected(int position) {
-
+                Fragment fragment = null;
+                switch (position){
+                    case 0:
+                        fragment = MoviesFragment.newInstance();
+                        break;
+                    case 1:
+                        fragment = MusicFragment.newInstance();
+                        break;
+                    case 2:
+                        fragment = BooksFragment.newInstance();
+                        break;
+                    case 3:
+                        fragment = NewsstandFragment.newInstance();
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
             }
         });
     }

@@ -13,7 +13,6 @@ public class NewsstandFragment extends Fragment {
 
     private RecyclerView recycleView;
 
-
     public NewsstandFragment() {
         // Required empty public constructor
     }
@@ -27,14 +26,12 @@ public class NewsstandFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View contentView = inflater.inflate(R.layout.fragment_books, container, false);
-        recycleView = (RecyclerView) contentView.findViewById(R.id.recycleView);
-        recycleView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recycleView.setAdapter(new BookAdapter());
+        View contentView = inflater.inflate(R.layout.fragment_newsstand, container, false);
+
         return contentView;
     }
 
-    private class BookAdapter extends RecyclerView.Adapter<ViewHolder>{
+    private class BookAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -52,7 +49,7 @@ public class NewsstandFragment extends Fragment {
         }
     }
 
-    private class ViewHolder extends RecyclerView.ViewHolder{
+    private class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewHolder(View itemView) {
             super(itemView);
