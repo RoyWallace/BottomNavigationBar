@@ -4,7 +4,7 @@ Material design 更新的BottomNavigationbar的开源实现
 [bottom navigation bars的规范在这里](https://www.google.com/design/spec/components/bottom-navigation.html)
 
 ###Show
-![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/demo1.gif?raw=true)
+![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.2.gif?raw=true)
 
 ####How to use
 [![](https://jitpack.io/v/RoyWallace/BottomNavigationBar.svg)](https://jitpack.io/#RoyWallace/BottomNavigationBar)
