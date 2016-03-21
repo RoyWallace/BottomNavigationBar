@@ -21,7 +21,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 
 	dependencies {
-		    compile 'com.github.RoyWallace:BottomNavigationBar:v0.1'
+		    compile 'com.github.RoyWallace:BottomNavigationBar:v0.2'
 	}
 
 **Step 3.**  use it in your layout xml
