@@ -37,7 +37,7 @@ public class BottomBarTab extends RelativeLayout {
     }
 
     public void setSelected(boolean selected) {
-        this.imageView.setSelected(true);
+        this.imageView.setSelected(selected);
     }
 
     public boolean isSelected() {

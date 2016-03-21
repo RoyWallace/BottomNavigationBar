@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -59,13 +60,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void setUpBottomNavigationBar() {
 
         bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
-        bottomLayout.addTab(R.mipmap.icon_movies_selected, "Movies & Tv", 0xff4a5965);
-        bottomLayout.addTab(R.mipmap.icon_music_selected, "Music", 0xff096c54);
-        bottomLayout.addTab(R.mipmap.icon_books_selected, "Books", 0xff8a6a64);
-        bottomLayout.addTab(R.mipmap.icon_news_selected, "Newsstand", 0xff553b36);
+        bottomLayout.addTab(R.drawable.selector_movie, "Movies & Tv", 0xff4a5965);
+        bottomLayout.addTab(R.drawable.selector_music, "Music", 0xff096c54);
+        bottomLayout.addTab(R.drawable.selector_books, "Books", 0xff8a6a64);
+        bottomLayout.addTab(R.drawable.selector_news, "Newsstand", 0xff553b36);
         bottomLayout.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
             public void onSelected(BottomBarTab tab, int position) {
+                Log.i("etong","tab: "+tab.isSelected());
                 Fragment fragment = null;
                 switch (position) {
                     case 0:
@@ -80,8 +82,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     case 3:
                         fragment = NewsstandFragment.newInstance();
                         break;
+                    default:
+                        fragment = MoviesFragment.newInstance();
+                        break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, fragment)
+//                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                        .commitAllowingStateLoss();
             }
         });
     }

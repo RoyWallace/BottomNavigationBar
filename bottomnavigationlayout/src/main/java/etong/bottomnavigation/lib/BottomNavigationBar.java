@@ -41,6 +41,8 @@ public class BottomNavigationBar extends LinearLayout {
 
     private int currentPosition;
 
+    private int animation_duration = 250;
+
     public BottomNavigationBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(HORIZONTAL);
@@ -176,13 +178,14 @@ public class BottomNavigationBar extends LinearLayout {
                     ObjectAnimator ty = ObjectAnimator.ofFloat(tab.imageView, "translationY", 0, -tenDp);
 
                     AnimatorSet animatorSet = new AnimatorSet();
-                    animatorSet.setDuration(250);
+                    animatorSet.setDuration(animation_duration);
                     animatorSet.playTogether(w, sx, sy, ty);
                     animatorSet.start();
 
                     ripple(tab, tab.color);
                 }
             } else {
+                tab.setSelected(false);
                 if (tab.textView.getVisibility() == VISIBLE) {
                     final LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tab.getLayoutParams();
                     ValueAnimator w = ValueAnimator.ofInt(selectedWidth, defaultWidth);
@@ -201,13 +204,12 @@ public class BottomNavigationBar extends LinearLayout {
                     ObjectAnimator ty = ObjectAnimator.ofFloat(tab.imageView, "translationY", -tenDp, 0);
 
                     AnimatorSet animatorSet = new AnimatorSet();
-                    animatorSet.setDuration(250);
+                    animatorSet.setDuration(animation_duration);
                     animatorSet.playTogether(w, sx, sy, ty);
                     animatorSet.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             tab.textView.setVisibility(GONE);
-                            tab.setSelected(false);
                         }
                     });
                     animatorSet.start();

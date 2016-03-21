@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        tools:src="@mipmap/ic_local_movies_white_48dp"/>
+        tools:src="@mipmap/ic_movie_default"/>
 
     <TextView
         android:id="@+id/textView"
