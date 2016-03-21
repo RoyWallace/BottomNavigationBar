@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,12 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import etong.bottomnavigation.lib.BottomBarTab;
 import etong.bottomnavigation.lib.BottomNavigationBar;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,15 +59,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void setUpBottomNavigationBar() {
 
         bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
-        bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Movies & Tv", 0xff4a5965);
-        bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Music", 0xff096c54);
-        bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Books", 0xff8a6a64);
-        bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Newsstand", 0xff553b36);
+        bottomLayout.addTab(R.mipmap.icon_movies_selected, "Movies & Tv", 0xff4a5965);
+        bottomLayout.addTab(R.mipmap.icon_music_selected, "Music", 0xff096c54);
+        bottomLayout.addTab(R.mipmap.icon_books_selected, "Books", 0xff8a6a64);
+        bottomLayout.addTab(R.mipmap.icon_news_selected, "Newsstand", 0xff553b36);
         bottomLayout.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
-            public void onSelected(int position) {
+            public void onSelected(BottomBarTab tab, int position) {
                 Fragment fragment = null;
-                switch (position){
+                switch (position) {
                     case 0:
                         fragment = MoviesFragment.newInstance();
                         break;

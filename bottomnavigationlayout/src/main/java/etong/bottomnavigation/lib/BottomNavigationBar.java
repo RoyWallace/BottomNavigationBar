@@ -9,19 +9,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
-
-import static android.view.animation.Animation.RELATIVE_TO_SELF;
 
 /**
  * Created by hwt on 2016/3/16.
@@ -73,7 +66,9 @@ public class BottomNavigationBar extends LinearLayout {
                     currentColor = tab.color;
                     tab.textView.setVisibility(VISIBLE);
                     tab.imageView.setY(sixDp);
+                    tab.setSelected(true);
                 } else {
+                    tab.setSelected(false);
                     params.width = defaultWidth;
                 }
             }
@@ -84,6 +79,14 @@ public class BottomNavigationBar extends LinearLayout {
     public void setSelected(int position) {
         this.currentPosition = position;
         this.currentColor = tabList.get(position).color;
+        for (int i = 0; i < tabList.size(); i++) {
+            BottomBarTab tab = tabList.get(i);
+            if (i == position) {
+                tab.setSelected(true);
+            } else {
+                tab.setSelected(false);
+            }
+        }
     }
 
     public void ripple(View view, int color) {
@@ -152,9 +155,9 @@ public class BottomNavigationBar extends LinearLayout {
         for (int i = 0; i < tabList.size(); i++) {
             final BottomBarTab tab = tabList.get(i);
             if (selected.equals(tab)) {
-                tabListener.onSelected(i);
+                tabListener.onSelected(tab, i);
+                tab.setSelected(true);
                 if (tab.textView.getVisibility() == GONE) {
-
                     final LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tab.getLayoutParams();
                     ValueAnimator w = ValueAnimator.ofInt(defaultWidth, selectedWidth);
                     w.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -204,6 +207,7 @@ public class BottomNavigationBar extends LinearLayout {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             tab.textView.setVisibility(GONE);
+                            tab.setSelected(false);
                         }
                     });
                     animatorSet.start();
@@ -218,6 +222,6 @@ public class BottomNavigationBar extends LinearLayout {
     }
 
     public interface TabListener {
-        void onSelected(int position);
+        void onSelected(BottomBarTab tab, int position);
     }
 }

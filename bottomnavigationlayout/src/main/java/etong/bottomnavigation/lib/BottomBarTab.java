@@ -36,12 +36,11 @@ public class BottomBarTab extends RelativeLayout {
         this.textView.setText(text);
     }
 
-    public void selected(int defaultWidth, int selectedWidth) {
-
-
+    public void setSelected(boolean selected) {
+        this.imageView.setSelected(true);
     }
 
-    public void unSelected() {
-
+    public boolean isSelected() {
+        return imageView.isSelected();
     }
 }
