@@ -1,6 +1,8 @@
 # BottomNavigationBar
 Material design 更新的BottomNavigationbar的开源实现
 
+目前版本最新版本是v0.2，还在努力完善中，有兴趣的朋友可以关注。如果发现问题请写在issue，我会定期查看和修复。
+
 [bottom navigation bars的规范在这里](https://www.google.com/design/spec/components/bottom-navigation.html)
 
 ###Show
@@ -21,7 +23,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 
 	dependencies {
-		    compile 'com.github.RoyWallace:BottomNavigationBar:v0.2'
+		    compile 'com.github.RoyWallace:BottomNavigationBar:v0.1'
 	}
 
 **Step 3.**  use it in your layout xml

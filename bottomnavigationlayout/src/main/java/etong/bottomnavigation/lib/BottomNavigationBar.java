@@ -31,7 +31,7 @@ public class BottomNavigationBar extends LinearLayout {
 
     private TabListener tabListener;
 
-    private int tenDp;
+    private int eightDp;
 
     private int sixDp;
 
@@ -41,7 +41,7 @@ public class BottomNavigationBar extends LinearLayout {
 
     private int currentPosition;
 
-    private int animation_duration = 250;
+    private int animation_duration = 150;
 
     public BottomNavigationBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -49,7 +49,7 @@ public class BottomNavigationBar extends LinearLayout {
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         setGravity(Gravity.CENTER_HORIZONTAL);
         sixDp = getResources().getDimensionPixelOffset(R.dimen.sixDp);
-        tenDp = getResources().getDimensionPixelOffset(R.dimen.tenDp);
+        eightDp = getResources().getDimensionPixelOffset(R.dimen.eightDp);
     }
 
     @Override
@@ -89,6 +89,10 @@ public class BottomNavigationBar extends LinearLayout {
                 tab.setSelected(false);
             }
         }
+    }
+
+    public void setTextColor(int textColor) {
+
     }
 
     public void ripple(View view, int color) {
@@ -137,7 +141,7 @@ public class BottomNavigationBar extends LinearLayout {
         tab.setImageResource(resId);
         tab.setText(text);
         tab.color = color;
-        //设置点击监听
+        //set tab click listener
         tab.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,7 +179,7 @@ public class BottomNavigationBar extends LinearLayout {
 
                     ObjectAnimator sy = ObjectAnimator.ofFloat(tab.textView, "scaleY", 0, 1);
 
-                    ObjectAnimator ty = ObjectAnimator.ofFloat(tab.imageView, "translationY", 0, -tenDp);
+                    ObjectAnimator ty = ObjectAnimator.ofFloat(tab.imageView, "translationY", 0, -eightDp);
 
                     AnimatorSet animatorSet = new AnimatorSet();
                     animatorSet.setDuration(animation_duration);
@@ -201,7 +205,7 @@ public class BottomNavigationBar extends LinearLayout {
 
                     ObjectAnimator sy = ObjectAnimator.ofFloat(tab.textView, "scaleY", 1, 0);
 
-                    ObjectAnimator ty = ObjectAnimator.ofFloat(tab.imageView, "translationY", -tenDp, 0);
+                    ObjectAnimator ty = ObjectAnimator.ofFloat(tab.imageView, "translationY", -eightDp, 0);
 
                     AnimatorSet animatorSet = new AnimatorSet();
                     animatorSet.setDuration(animation_duration);
