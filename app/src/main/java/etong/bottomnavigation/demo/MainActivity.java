@@ -55,11 +55,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction().replace(R.id.container, MoviesFragment.newInstance()).commitAllowingStateLoss();
 
         setUpBottomNavigationBar();
+
+
+        //TODO 动态设置tab数量
+//        findViewById(R.id.addTab).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                bottomLayout.addTab(R.drawable.selector_movie, "Movies & Tv", 0xff4a5965);
+//            }
+//        });
     }
 
     public void setUpBottomNavigationBar() {
 
         bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
+        bottomLayout.selectedScale = 1.5f;
         bottomLayout.addTab(R.drawable.selector_movie, "Movies & Tv", 0xff4a5965);
         bottomLayout.addTab(R.drawable.selector_music, "Music", 0xff096c54);
         bottomLayout.addTab(R.drawable.selector_books, "Books", 0xff8a6a64);
@@ -67,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomLayout.setOnTabListener(new BottomNavigationBar.TabListener() {
             @Override
             public void onSelected(BottomBarTab tab, int position) {
-                Log.i("etong","tab: "+tab.isSelected());
                 Fragment fragment = null;
                 switch (position) {
                     case 0:

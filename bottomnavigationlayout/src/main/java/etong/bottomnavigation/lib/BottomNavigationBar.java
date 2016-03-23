@@ -41,7 +41,11 @@ public class BottomNavigationBar extends LinearLayout {
 
     private int currentPosition;
 
-    private int animation_duration = 150;
+    public int animation_duration = 150;
+
+    public float selectedScale = 1.0f;
+
+    private float textViewStartScale = 0.0f;
 
     public BottomNavigationBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -56,8 +60,8 @@ public class BottomNavigationBar extends LinearLayout {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         if (changed) {
-            defaultWidth = (int) (getWidth() / (tabList.size() + 0.5f));
-            selectedWidth = (int) (defaultWidth * 1.5f);
+            defaultWidth = (int) (getWidth() / (tabList.size() + selectedScale - 1));
+            selectedWidth = (int) (defaultWidth * selectedScale);
 
             for (int i = 0; i < getChildCount(); i++) {
                 BottomBarTab tab = (BottomBarTab) getChildAt(i);

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:fitsSystemWindows="false"
     tools:context="etong.bottomnavigation.demo.MainActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -24,6 +24,14 @@
     </android.support.design.widget.AppBarLayout>
 
     <!--<include layout="@layout/content_main"/>-->
+
+
+    <!--<Button-->
+        <!--android:id="@+id/addTab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:text="add tab"/>-->
 
     <FrameLayout
         android:id="@+id/container"
