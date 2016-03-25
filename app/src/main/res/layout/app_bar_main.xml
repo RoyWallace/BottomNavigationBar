@@ -26,12 +26,12 @@
     <!--<include layout="@layout/content_main"/>-->
 
 
-    <!--<Button-->
-        <!--android:id="@+id/addTab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:text="add tab"/>-->
+    <Button
+        android:id="@+id/addTab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="add tab"/>
 
     <FrameLayout
         android:id="@+id/container"

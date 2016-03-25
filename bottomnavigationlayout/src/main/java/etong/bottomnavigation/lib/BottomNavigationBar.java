@@ -6,9 +6,11 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,51 +33,55 @@ public class BottomNavigationBar extends LinearLayout {
 
     private TabListener tabListener;
 
-    private int eightDp;
+    private int tabSelectedWidth;
+    private int tabDefaultWidth;
 
-    private int sixDp;
+    private int imageSelectedTop;
+    private int imageDefaultTop;
 
-    private int selectedWidth;
-
-    private int defaultWidth;
+    private float textDefaultScale;
 
     private int currentPosition;
 
     public int animation_duration = 150;
 
-    public float selectedScale = 1.0f;
+    private float tabWidthSelectedScale = 1.0f;
 
-    private float textViewStartScale = 0.0f;
+    public boolean textDefaultVisible = false;
 
     public BottomNavigationBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(HORIZONTAL);
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         setGravity(Gravity.CENTER_HORIZONTAL);
-        sixDp = getResources().getDimensionPixelOffset(R.dimen.sixDp);
-        eightDp = getResources().getDimensionPixelOffset(R.dimen.eightDp);
+        imageSelectedTop = (int) (Resources.getSystem().getDisplayMetrics().scaledDensity * 6);
+        imageDefaultTop = (int) (Resources.getSystem().getDisplayMetrics().scaledDensity * 16);
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         if (changed) {
-            defaultWidth = (int) (getWidth() / (tabList.size() + selectedScale - 1));
-            selectedWidth = (int) (defaultWidth * selectedScale);
+            tabDefaultWidth = (int) (getWidth() / (tabList.size() + tabWidthSelectedScale - 1));
+            tabSelectedWidth = (int) (tabDefaultWidth * tabWidthSelectedScale);
 
+            //TODO 此部分代码需要抽取重构
             for (int i = 0; i < getChildCount(); i++) {
                 BottomBarTab tab = (BottomBarTab) getChildAt(i);
                 LayoutParams params = (LayoutParams) tab.getLayoutParams();
                 if (i == currentPosition) {
-                    params.width = selectedWidth;
                     //get the initial selected position and set bottomNavigationBar's background color
                     currentColor = tab.color;
+                    params.width = tabSelectedWidth;
                     tab.textView.setVisibility(VISIBLE);
-                    tab.imageView.setY(sixDp);
+                    tab.imageView.setY(imageSelectedTop);
                     tab.setSelected(true);
                 } else {
+                    params.width = tabDefaultWidth;
+                    tab.imageView.setY(imageDefaultTop);
+                    tab.textView.setScaleX(textDefaultScale);
+                    tab.textView.setScaleY(textDefaultScale);
                     tab.setSelected(false);
-                    params.width = defaultWidth;
                 }
             }
             setBackgroundColor(currentColor);
@@ -95,8 +101,24 @@ public class BottomNavigationBar extends LinearLayout {
         }
     }
 
-    public void setTextColor(int textColor) {
+    public void setTabWidthSelectedScale(float tabWidthSelectedScale) {
+        this.tabWidthSelectedScale = tabWidthSelectedScale;
+        //TODO 需要增加动态修改放大倍数方法
+    }
 
+    public void setTextDefaultVisible(boolean visible) {
+        this.textDefaultVisible = visible;
+        if (textDefaultVisible) {
+            imageDefaultTop = (int) (Resources.getSystem().getDisplayMetrics().scaledDensity * 8);
+            textDefaultScale = 0.9f;
+        } else {
+            imageDefaultTop = (int) (Resources.getSystem().getDisplayMetrics().scaledDensity * 16);
+            textDefaultScale = 0f;
+        }
+    }
+
+    public void setTextColor(int textColor) {
+        //TODO 设置字体颜色
     }
 
     public void ripple(View view, int color) {
@@ -136,11 +158,10 @@ public class BottomNavigationBar extends LinearLayout {
     }
 
     public void addTab(int resId, String text) {
-
+        //TODO 待定
     }
 
     public void addTab(int resId, String text, int color) {
-        int index = tabList.size();
         BottomBarTab tab = new BottomBarTab(getContext());
         tab.setImageResource(resId);
         tab.setText(text);
@@ -159,6 +180,8 @@ public class BottomNavigationBar extends LinearLayout {
 
         addView(tab, params);
         tabList.add(tab);
+
+        postInvalidate();
     }
 
     public void handClickEvent(BottomBarTab selected) {
@@ -166,61 +189,26 @@ public class BottomNavigationBar extends LinearLayout {
             final BottomBarTab tab = tabList.get(i);
             if (selected.equals(tab)) {
                 tabListener.onSelected(tab, i);
-                tab.setSelected(true);
-                if (tab.textView.getVisibility() == GONE) {
-                    final LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tab.getLayoutParams();
-                    ValueAnimator w = ValueAnimator.ofInt(defaultWidth, selectedWidth);
-                    w.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                        @Override
-                        public void onAnimationUpdate(ValueAnimator animation) {
-                            params.width = (int) animation.getAnimatedValue();
-                            requestLayout();
-                        }
-                    });
+                if (!tab.isSelected()) {
+                    tab.setSelected(true);
+
 
                     tab.textView.setVisibility(VISIBLE);
-                    ObjectAnimator sx = ObjectAnimator.ofFloat(tab.textView, "scaleX", 0, 1);
-
-                    ObjectAnimator sy = ObjectAnimator.ofFloat(tab.textView, "scaleY", 0, 1);
-
-                    ObjectAnimator ty = ObjectAnimator.ofFloat(tab.imageView, "translationY", 0, -eightDp);
-
-                    AnimatorSet animatorSet = new AnimatorSet();
-                    animatorSet.setDuration(animation_duration);
-                    animatorSet.playTogether(w, sx, sy, ty);
-                    animatorSet.start();
+                    tab.widthAnimator(tabDefaultWidth, tabSelectedWidth);
+                    tab.textScaleAnimator(1);
+                    tab.imageTranslationAnimator(imageDefaultTop, imageSelectedTop);
+                    tab.animatorStart(animation_duration);
 
                     ripple(tab, tab.color);
                 }
             } else {
-                tab.setSelected(false);
-                if (tab.textView.getVisibility() == VISIBLE) {
-                    final LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tab.getLayoutParams();
-                    ValueAnimator w = ValueAnimator.ofInt(selectedWidth, defaultWidth);
-                    w.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                        @Override
-                        public void onAnimationUpdate(ValueAnimator animation) {
-                            params.width = (int) animation.getAnimatedValue();
-                            requestLayout();
-                        }
-                    });
+                if (tab.isSelected()) {
+                    tab.setSelected(false);
 
-                    ObjectAnimator sx = ObjectAnimator.ofFloat(tab.textView, "scaleX", 1, 0);
-
-                    ObjectAnimator sy = ObjectAnimator.ofFloat(tab.textView, "scaleY", 1, 0);
-
-                    ObjectAnimator ty = ObjectAnimator.ofFloat(tab.imageView, "translationY", -eightDp, 0);
-
-                    AnimatorSet animatorSet = new AnimatorSet();
-                    animatorSet.setDuration(animation_duration);
-                    animatorSet.playTogether(w, sx, sy, ty);
-                    animatorSet.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            tab.textView.setVisibility(GONE);
-                        }
-                    });
-                    animatorSet.start();
+                    tab.widthAnimator(tabSelectedWidth, tabDefaultWidth);
+                    tab.textScaleAnimator(textDefaultScale);
+                    tab.imageTranslationAnimator(imageSelectedTop, imageDefaultTop);
+                    tab.animatorStart(animation_duration);
 
                 }
             }

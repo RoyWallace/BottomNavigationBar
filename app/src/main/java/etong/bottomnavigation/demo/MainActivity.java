@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -69,7 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void setUpBottomNavigationBar() {
 
         bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
-        bottomLayout.selectedScale = 1.5f;
+        bottomLayout.setTabWidthSelectedScale(1.0f);
+        bottomLayout.setTextDefaultVisible(true);
         bottomLayout.addTab(R.drawable.selector_movie, "Movies & Tv", 0xff4a5965);
         bottomLayout.addTab(R.drawable.selector_music, "Music", 0xff096c54);
         bottomLayout.addTab(R.drawable.selector_books, "Books", 0xff8a6a64);

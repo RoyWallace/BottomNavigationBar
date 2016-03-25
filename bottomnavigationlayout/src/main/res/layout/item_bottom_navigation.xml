@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:paddingLeft="12dp"
-       android:paddingRight="12dp"
-       xmlns:tools="http://schemas.android.com/tools">
+       android:paddingRight="12dp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,9 +23,7 @@
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="14sp"
-        android:visibility="gone"
-        tools:visibility="visible"
-        tools:textColor="#000000"
-        tools:text="Books"/>
+        tools:text="Books"
+        tools:textColor="#000000"/>
 
 </merge>
