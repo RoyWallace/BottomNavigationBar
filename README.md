@@ -1,12 +1,27 @@
 # BottomNavigationBar
 Material design 更新的BottomNavigationbar的开源实现
 
-目前版本最新版本是v0.2，还在努力完善中，有兴趣的朋友可以关注。如果发现问题请写在issue，我会定期查看和修复。
+目前版本最新版本是v0.3，还在努力完善中，有兴趣的朋友可以关注。如果发现问题请写在issue，我会定期查看和修复。
+
+###version
+
+v0.1 基础版本
+
+v0.2 支持修改tab selected 情况下的width scale 属性
+
+v0.3 支持设置tab text 在unselected情况下是否隐藏
+
+###TODO
+
+ 支持 bar background 不随tab选中而变化
+ 支持 tab textColor selector
+
 
 [bottom navigation bars的规范在这里](https://www.google.com/design/spec/components/bottom-navigation.html)
 
 ###Show
 ![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.2.gif?raw=true)
+![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.3.gif?raw=true)
 
 ####How to use
 [![](https://jitpack.io/v/RoyWallace/BottomNavigationBar.svg)](https://jitpack.io/#RoyWallace/BottomNavigationBar)

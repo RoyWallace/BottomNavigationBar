@@ -6,11 +6,13 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.StateSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +51,12 @@ public class BottomNavigationBar extends LinearLayout {
 
     public boolean textDefaultVisible = false;
 
+    private boolean colorful = true;
+
+    private int textSelectedColor;
+
+    private int textDefaultColor;
+
     public BottomNavigationBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(HORIZONTAL);
@@ -74,6 +82,7 @@ public class BottomNavigationBar extends LinearLayout {
                     currentColor = tab.color;
                     params.width = tabSelectedWidth;
                     tab.textView.setVisibility(VISIBLE);
+//                    tab.textView.setTextColor(textSelectedColor);
                     tab.imageView.setY(imageSelectedTop);
                     tab.setSelected(true);
                 } else {
@@ -81,6 +90,7 @@ public class BottomNavigationBar extends LinearLayout {
                     tab.imageView.setY(imageDefaultTop);
                     tab.textView.setScaleX(textDefaultScale);
                     tab.textView.setScaleY(textDefaultScale);
+//                    tab.textView.setTextColor(textDefaultColor);
                     tab.setSelected(false);
                 }
             }
@@ -117,22 +127,34 @@ public class BottomNavigationBar extends LinearLayout {
         }
     }
 
-    public void setTextColor(int textColor) {
+    public void setColorful(boolean colorful) {
+        this.colorful = colorful;
+    }
+
+    public void setTextColorResId(int textColorResId) {
         //TODO 设置字体颜色
+        ColorStateList stateList = getResources().getColorStateList(textColorResId);
+        textSelectedColor = stateList.getColorForState(View.SELECTED_STATE_SET, 0xffffffff);
+        textDefaultColor = stateList.getDefaultColor();
+
     }
 
     public void ripple(View view, int color) {
         int x = (int) (view.getX() + view.getWidth() / 2);
         int y = (int) (view.getY() + view.getHeight() / 2);
-        drawCircle(x, y, color);
+        if (colorful) {
+            drawCircle(x, y, getWidth(), color);
+        } else {
+            drawCircle(x, y, getHeight() / 2, textSelectedColor);
+        }
     }
 
-    private void drawCircle(int cx, int cy, int color) {
+    private void drawCircle(int cx, int cy, int maxR, int color) {
         this.cx = cx;
         this.cy = cy;
         this.currentColor = color;
 
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(0, getWidth());
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(0, maxR);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
