@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void setUpBottomNavigationBar() {
 
         bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
-        bottomLayout.setTabWidthSelectedScale(1.0f);
+        bottomLayout.setTabWidthSelectedScale(1.5f);
         bottomLayout.setTextDefaultVisible(true);
 //        bottomLayout.setTextColorResId(R.color.color_tab_text);
         bottomLayout.addTab(R.drawable.selector_movie, "Movies & Tv", 0xff4a5965);

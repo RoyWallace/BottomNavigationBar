@@ -68,6 +68,11 @@ and you can also use the **BottomNavigationBehavior** with **CoordinatorLayout**
         android:layout_gravity="bottom"
         app:layout_behavior="etong.bottomnavigation.lib.BottomNavigationBehavior"/>
 
+####Set tab selected width
+	bottomLayout.setTabWidthSelectedScale(1.0f);
+####Set tab text default visible
+	bottomLayout.setTextDefaultVisible(true);
+	
  
 
 #License
