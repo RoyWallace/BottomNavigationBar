@@ -1,5 +1,6 @@
 package etong.bottomnavigation.demo;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 
@@ -29,6 +32,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            // Translucent status bar
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // Translucent navigation bar
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Instant run");
@@ -63,13 +79,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                bottomLayout.addTab(R.drawable.selector_movie, "Movies & Tv", 0xff4a5965);
 //            }
 //        });
+
+
     }
 
     public void setUpBottomNavigationBar() {
 
         bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
         bottomLayout.setTabWidthSelectedScale(1.5f);
-        bottomLayout.setTextDefaultVisible(true);
+        bottomLayout.setTextDefaultVisible(false);
 //        bottomLayout.setTextColorResId(R.color.color_tab_text);
         bottomLayout.addTab(R.drawable.selector_movie, "Movies & Tv", 0xff4a5965);
         bottomLayout.addTab(R.drawable.selector_music, "Music", 0xff096c54);
