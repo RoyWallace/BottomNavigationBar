@@ -13,6 +13,7 @@ v0.3 支持设置tab text 在unselected情况下是否隐藏
 
 ###Demo修改
 有童鞋反应说要如何实现像新规范里面NavigationBar透明的样式，所以这里把项目的Demo修改一下，实现Navigationbar透明并且覆盖在BottomNavigationBar上面。（目前这种实现方式还不够完善，会导致statusBar也不占位的问题。如果有网友有更好的实现方式，不妨提出来，大家一起探讨和分享。）
+ps:最近碰上公司项目比较赶，所以暂停了BottomNavigationBar的开源进度。
 
 具体实现：
 demo基础上
