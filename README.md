@@ -17,7 +17,7 @@ v0.3 支持设置tab text 在unselected情况下是否隐藏
 具体实现：
 demo基础上
 
-		setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             // Translucent status bar
@@ -31,7 +31,7 @@ demo基础上
         }
 去掉所有的xml中的所有android:fitsSystemWindows="true"
 
-	<android.support.design.widget.AppBarLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -72,49 +72,49 @@ demo基础上
 **Step 1**. Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
 
-	allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
-	}
+    allprojects {
+        repositories {
+            ...
+            maven { url "https://jitpack.io" }
+        }
+    }
 **Step 2.** Add the dependency
 
-	dependencies {
-		    compile 'com.github.RoyWallace:BottomNavigationBar:v0.1'
-	}
+    dependencies {
+            compile 'com.github.RoyWallace:BottomNavigationBar:v0.1'
+    }
 
 **Step 3.**  use it in your layout xml
 
-	<etong.bottomnavigation.lib.BottomNavigationBar
+    <etong.bottomnavigation.lib.BottomNavigationBar
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"/>
 **Step 4.** add tab and tabSelected listener
 
-	bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
-	//params: int icon,String text,int color
-	bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Movies & Tv", 0xff4a5965);
-	bottomLayout.setOnTabListener(new BottomNavigationBar.TabListener() {
-	    @Override
-	    public void onSelected(int position) {
-	        //...
-	    }
-	});
+    bottomLayout = (BottomNavigationBar) findViewById(R.id.bottomLayout);
+    //params: int icon,String text,int color
+    bottomLayout.addTab(R.mipmap.ic_local_movies_white_48dp, "Movies & Tv", 0xff4a5965);
+    bottomLayout.setOnTabListener(new BottomNavigationBar.TabListener() {
+        @Override
+        public void onSelected(int position) {
+            //...
+        }
+    });
 and you can also use the **BottomNavigationBehavior** with **CoordinatorLayout** 
 
-	<etong.bottomnavigation.lib.BottomNavigationBar
+    <etong.bottomnavigation.lib.BottomNavigationBar
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
         app:layout_behavior="etong.bottomnavigation.lib.BottomNavigationBehavior"/>
 
-####Set tab selected width(	bottomLayout.setTabWidthSelectedScale(1.5f);
+####Set tab selected width( bottomLayout.setTabWidthSelectedScale(1.5f);
 ####Set tab text default visible
-	bottomLayout.setTextDefaultVisible(true);
-	
+    bottomLayout.setTextDefaultVisible(true);
+    
  
 
 #License
