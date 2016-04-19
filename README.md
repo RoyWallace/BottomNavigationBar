@@ -51,8 +51,9 @@ demo基础上
 
     </android.support.design.widget.AppBarLayout>
 
-补个图
-![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.3.1.gif?raw=true)
+#####补个图
+
+ ![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.3.1.gif?raw=true)
 
 
 ###TODO
