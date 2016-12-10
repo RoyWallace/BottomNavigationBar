@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,32 +18,22 @@
             android:layout_height="?attr/actionBarSize"
             android:background="#33000000"
             app:layout_scrollFlags="scroll"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
     <!--<include layout="@layout/content_main"/>-->
-
-
-    <!--<Button-->
-        <!--android:id="@+id/addTab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:text="add tab"/>-->
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <etong.bottomnavigation.lib.BottomNavigationBar
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_gravity="bottom"
-        app:layout_behavior="etong.bottomnavigation.lib.BottomNavigationBehavior">
+        android:layout_gravity="bottom">
 
     </etong.bottomnavigation.lib.BottomNavigationBar>
 
@@ -55,6 +44,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_dialog_email"
-        android:visibility="gone"/>
+        android:visibility="visible" />
 
 </android.support.design.widget.CoordinatorLayout>

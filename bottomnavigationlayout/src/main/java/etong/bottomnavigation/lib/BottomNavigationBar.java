@@ -7,6 +7,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -70,6 +71,7 @@ public class BottomNavigationBar extends LinearLayout {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         if (changed) {
+            Log.i("etong","layout changed");
             tabDefaultWidth = (int) (getWidth() / (tabList.size() + tabWidthSelectedScale - 1));
             tabSelectedWidth = (int) (tabDefaultWidth * tabWidthSelectedScale);
 
@@ -95,6 +97,8 @@ public class BottomNavigationBar extends LinearLayout {
                 }
             }
             setBackgroundColor(currentColor);
+        }else{
+            Log.i("etong","layout un changed");
         }
     }
 
