@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
     tools:context="etong.bottomnavigation.demo.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -32,8 +35,10 @@
     <etong.bottomnavigation.lib.BottomNavigationBar
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="bottom">
+        android:layout_height="112dp"
+        android:layout_gravity="bottom"
+        app:layout_behavior="etong.bottomnavigation.lib.BottomNavigationBehavior">
+
 
     </etong.bottomnavigation.lib.BottomNavigationBar>
 

@@ -218,7 +218,6 @@ public class BottomNavigationBar extends LinearLayout {
                 if (!tab.isSelected()) {
                     tab.setSelected(true);
 
-
                     tab.textView.setVisibility(VISIBLE);
                     tab.widthAnimator(tabDefaultWidth, tabSelectedWidth);
                     tab.textScaleAnimator(1);
