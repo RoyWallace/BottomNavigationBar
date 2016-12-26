@@ -8,4 +8,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello movies fragment</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_settings">Setting</string>
+    <string name="menu_navigation">Navigation</string>
 </resources>

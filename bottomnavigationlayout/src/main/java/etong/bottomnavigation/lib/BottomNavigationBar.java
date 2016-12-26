@@ -2,18 +2,14 @@ package etong.bottomnavigation.lib;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.StateSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +67,6 @@ public class BottomNavigationBar extends LinearLayout {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         if (changed) {
-            Log.i("etong","layout changed");
             tabDefaultWidth = (int) (getWidth() / (tabList.size() + tabWidthSelectedScale - 1));
             tabSelectedWidth = (int) (tabDefaultWidth * tabWidthSelectedScale);
 
@@ -97,9 +92,44 @@ public class BottomNavigationBar extends LinearLayout {
                 }
             }
             setBackgroundColor(currentColor);
-        }else{
-            Log.i("etong","layout un changed");
+            Log.i("etong", "layout changed");
+        } else {
+            Log.i("etong", "layout un changed");
         }
+    }
+
+    public void measureChildWidth() {
+        int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        measure(w, h);
+        int height = getMeasuredHeight();
+        int width = getMeasuredWidth();
+
+        tabDefaultWidth = (int) (width / (tabList.size() + tabWidthSelectedScale - 1));
+        tabSelectedWidth = (int) (tabDefaultWidth * tabWidthSelectedScale);
+
+        //TODO 此部分代码需要抽取重构
+        for (int i = 0; i < getChildCount(); i++) {
+            BottomBarTab tab = (BottomBarTab) getChildAt(i);
+            LayoutParams params = (LayoutParams) tab.getLayoutParams();
+            if (i == currentPosition) {
+                //get the initial selected position and set bottomNavigationBar's background color
+                currentColor = tab.color;
+                params.width = tabSelectedWidth;
+                tab.textView.setVisibility(VISIBLE);
+//                    tab.textView.setTextColor(textSelectedColor);
+                tab.imageView.setY(imageSelectedTop);
+                tab.setSelected(true);
+            } else {
+                params.width = tabDefaultWidth;
+                tab.imageView.setY(imageDefaultTop);
+                tab.textView.setScaleX(textDefaultScale);
+                tab.textView.setScaleY(textDefaultScale);
+//                    tab.textView.setTextColor(textDefaultColor);
+                tab.setSelected(false);
+            }
+        }
+        setBackgroundColor(currentColor);
     }
 
     public void setSelected(int position) {
@@ -206,8 +236,7 @@ public class BottomNavigationBar extends LinearLayout {
 
         addView(tab, params);
         tabList.add(tab);
-
-        postInvalidate();
+//        measureChildWidth();
     }
 
     public void handClickEvent(BottomBarTab selected) {
