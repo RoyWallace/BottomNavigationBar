@@ -3,7 +3,7 @@ Material design 更新的BottomNavigationbar的开源实现
 
 目前版本最新版本是v0.3，还在努力完善中，有兴趣的朋友可以关注。如果发现问题请写在issue，我会定期查看和修复。
 
-###version
+### version
 
 v0.1 基础版本
 
@@ -11,7 +11,7 @@ v0.2 支持修改tab selected 情况下的width scale 属性
 
 v0.3 支持设置tab text 在unselected情况下是否隐藏
 
-###Demo修改
+### Demo修改
 有童鞋反应说要如何实现像新规范里面NavigationBar透明的样式，所以这里把项目的Demo修改一下，实现Navigationbar透明并且覆盖在BottomNavigationBar上面。（目前这种实现方式还不够完善，会导致statusBar也不占位的问题。如果有网友有更好的实现方式，不妨提出来，大家一起探讨和分享。）
 ps:最近碰上公司项目比较赶，所以暂停了BottomNavigationBar的开源进度。
 
@@ -51,12 +51,12 @@ demo基础上
 
     </android.support.design.widget.AppBarLayout>
 
-#####补个图
+##### 补个图
 
  ![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.3.1.gif?raw=true)
 
 
-###TODO
+### TODO
 
  支持 bar background 不随tab选中而变化
  支持 tab textColor selector
@@ -64,11 +64,11 @@ demo基础上
 
 [bottom navigation bars的规范在这里](https://www.google.com/design/spec/components/bottom-navigation.html)
 
-###Show
+### Show
 ![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.2.gif?raw=true)
 ![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.3.gif?raw=true)
 
-####How to use
+#### How to use
 [![](https://jitpack.io/v/RoyWallace/BottomNavigationBar.svg)](https://jitpack.io/#RoyWallace/BottomNavigationBar)
 
 **Step 1**. Add the JitPack repository to your build file
@@ -113,13 +113,13 @@ and you can also use the **BottomNavigationBehavior** with **CoordinatorLayout**
         android:layout_gravity="bottom"
         app:layout_behavior="etong.bottomnavigation.lib.BottomNavigationBehavior"/>
 
-####Set tab selected width( bottomLayout.setTabWidthSelectedScale(1.5f);
-####Set tab text default visible
+#### Set tab selected width( bottomLayout.setTabWidthSelectedScale(1.5f);
+#### Set tab text default visible
     bottomLayout.setTextDefaultVisible(true);
     
  
 
-#License
+# License
 BottomNavigationBar for Android
 The MIT License (MIT)
 
