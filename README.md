@@ -1,3 +1,5 @@
+#广而告之 Android讨论群：295456349
+
 # BottomNavigationBar
 Material design 更新的BottomNavigationbar的开源实现
 
