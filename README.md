@@ -1,4 +1,4 @@
-#广而告之 Android讨论群：295456349
+#开发过程中遇到问题可以加群讨论，Android讨论群：295456349
 
 # BottomNavigationBar
 Material design 更新的BottomNavigationbar的开源实现
