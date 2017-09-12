@@ -67,6 +67,7 @@ demo基础上
 [bottom navigation bars的规范在这里](https://www.google.com/design/spec/components/bottom-navigation.html)
 
 ###Show
+
 ![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.2.gif?raw=true)
 ![image](https://github.com/RoyWallace/BottomNavigationBar/blob/master/gif/v0.3.gif?raw=true)
 
